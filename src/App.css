@@ -1,38 +1,314 @@
-.App {
-  text-align: center;
+.app-wrap {
+  background: #e5e5e5;
+}
+* {
+  margin: 0px;
+}
+.list {
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header_container {
+  border-radius: 20px 20px 0 0;
+}
+.header__section {
+  border-bottom: 1px solid #eaeaea;
+}
+.container {
+  background: #ffffff;
+  max-width: 1080px;
+  padding: 0 60px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header__content {
+  box-sizing: border-box;
+  padding: 44px 0;
+  width: 100%;
+  height: 128px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header__logo {
+  display: flex;
+  gap: 15px;
+}
+.header__logo_titles {
   display: flex;
   flex-direction: column;
+  gap: 0;
+}
+.header__logo_sub-title {
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #000000;
+}
+.header__logo_sup-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9d9d9d;
+}
+.shop-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.header__shop {
+  display: flex;
+  gap: 30px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.shop-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #5c5c5c;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+}
+* {
+  box-sizing: border-box;
+}
+.container {
+  background: #ffffff;
+  max-width: 1080px;
+  padding: 0 60px;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.hero {
+  height: auto;
+}
+.hero_section {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+.hero__slider {
+  width: 100%;
+  background: #f4efe9;
+  border-radius: 20px;
+  height: 300px;
+  display: flex;
+}
+.text__side {
+  width: 319px;
+  padding: 16px 0 0 20px;
+}
+.logo-text {
+  margin-top: 32px;
+  margin-left: 41px;
+}
+.bg__side {
+  display: flex;
+  flex-grow: 1;
+  background-image: url("./images/img/bg-slider.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn__slider_buy:hover {
+  background: #7ea24c;
+  box-shadow: 3px 3px 20px black;
+}
+
+.btn__slider_buy {
+  min-width: 180px;
+  padding: 15px 0px;
+  border: none;
+  background: #a5d364;
+  border-radius: 110px;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-left: 41px;
+  margin-top: 10px;
+  transition: box-shadow, 300ms ease-in-out;
+}
+
+/* CARD */
+.card-wrap {
+  width: 210px;
+  background: rgb(246, 246, 246);
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  padding: 20px 28px 34px 31px;
+  position: relative;
+  transition: 300ms ease-in-out;
+}
+.card-like-icon {
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  transition: 200ms ease-in-out;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+}
+.card-like-icon:hover {
+  background: #fef0f0;
+}
+.card-like-icon:hover .like-btn {
+  fill: #ff8585;
+  stroke: #ff8585;
+}
+.liked-card {
+  width: 100%;
+  height: 100%;
+  stroke: black;
+  stroke-width: 3px;
+  fill: #fff;
+  transition: 200ms ease-in-out;
+  fill: #ff8585;
+  stroke: #ff8585;
+}
+.like-btn {
+  width: 100%;
+  height: 100%;
+  stroke: black;
+  stroke-width: 3px;
+  fill: #fff;
+  transition: 200ms ease-in-out;
+}
+
+.card-img {
+  width: 163px;
+  height: 142px;
+}
+.card-sub-title {
+  /* font-family: "Inter"; */
+  font-weight: 700;
+  font-size: 16px;
+  font-family:sans-serif;
+  line-height: 17px;
+  margin-bottom: 18px;
+  display: inline-block;
+  height: 34px;
+}
+.card-sup-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 17px;
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  margin-top: 15px;
+}
+.card-sup-title::before {
+  content: "Price:";
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 13px;
+  text-transform: uppercase;
+  color: #000000;
+}
+.card-add-icon {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border-radius: 7px;
+  border: 1px solid #f2f2f2;
+  transition: 200ms ease-in-out;
+  position: absolute;
+  right: 28px;
+  bottom: 34px;
+}
+.card-add-icon:hover {
+  background-color: #bdbdbd;
+}
+.card-add-icon:hover .plus-btn * {
+  fill: #fff;
+}
+.plus-btn {
+  width: 100%;
+  height: 100%;
+  transition: 200ms ease-in-out;
+}
+
+.card-add-icon-added {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #89f09c 0%, #3cc755 100%);
+  transition: 200ms ease-in-out;
+  position: absolute;
+  right: 28px;
+  bottom: 34px;
+}
+.added-icon {
+  width: 100%;
+  height: 100%;
+  transition: 200ms ease-in-out;
+}
+.card-wrap:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  background: #ffffff;
+  max-width: 1080px;
+  padding: 0 60px;
+  margin: 0 auto;
+}
+.product-content {
+  position: relative;
+  background: #fff;
+  width: 100%;
+  height: auto;
+  padding-bottom: 75px;
+}
+.products-title {
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+}
+.shoes-list {
+  margin-top: 40px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.search-input {
+  width: 250px;
+  height: 45px;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 13px 0px 13px 26px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+.search-input::placeholder {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #c4c4c4;
 }
