@@ -1,10 +1,12 @@
-import React, { FC, useState } from "react";
+import React, { Dispatch, FC, useState } from "react";
 import shoe from "../../images/img/shoes.png";
 import { ReactComponent as ShoeLike } from "../images/svg/shoe-like.svg";
 import { ReactComponent as Plus } from "../images/svg/plus.svg";
 import { ReactComponent as Added } from "../images/svg/added.svg";
 import axios from "axios";
 import "../App.css";
+import { useDispatch } from "react-redux";
+import { addFavourite } from "../redux/slices/sneakerSlice";
 
 type sneaker = {
   id: number;
@@ -18,13 +20,21 @@ interface dataFromProps {
 }
 
 const Card: FC<dataFromProps> = ({ data }) => {
+  const dispatch: Dispatch<any> = useDispatch();
   const [added, setAdded] = useState(false);
   const [isLiked, setLiked] = useState(false);
+
+  const onClickHandler = () => {
+    dispatch(addFavourite(data));
+  };
 
   return (
     <div className="card-wrap">
       <div className="card-like-icon">
-        <ShoeLike className={isLiked ? "liked-card" : "like-btn "}></ShoeLike>
+        <ShoeLike
+          onClick={onClickHandler}
+          className={isLiked ? "liked-card" : "like-btn "}
+        ></ShoeLike>
       </div>
       <img className="card-img" src={data.grid_picture_url} alt="sneakers" />
       <p className="card-sub-title">{data.name}</p>
