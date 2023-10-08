@@ -6,7 +6,7 @@ import { ReactComponent as Added } from "../images/svg/added.svg";
 import axios from "axios";
 import "../App.css";
 import { useDispatch } from "react-redux";
-import { addFavourite } from "../redux/slices/sneakerSlice";
+import { addToFav } from "../redux/slices/sneakerSlice";
 
 type sneaker = {
   id: number;
@@ -25,11 +25,14 @@ const Card: FC<dataFromProps> = ({ data }) => {
   const [isLiked, setLiked] = useState(false);
 
   const onClickHandler = () => {
-    dispatch(addFavourite(data));
+    dispatch(addToFav(data));
   };
 
   return (
     <div className="card-wrap">
+      <div className="card-overlay">
+        <button className="card-overlay-btn">Delete</button>
+      </div>
       <div className="card-like-icon">
         <ShoeLike
           onClick={onClickHandler}

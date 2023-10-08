@@ -1,9 +1,20 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_URL } from "../../api/axiosConfig";
-import getAllSneakersApi from "../../api/apiRequests";
+import { getFavSneakersApi } from "./../../api/apiRequests";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import getAllSneakersApi, { postFavSneakersApi } from "../../api/apiRequests";
 
 export const getAllThunk = createAsyncThunk("sneakers/getAll", async () => {
   return await getAllSneakersApi();
+});
+
+export const addToFav = createAsyncThunk(
+  "sneakers/add",
+  async (body: sneaker) => {
+    return await postFavSneakersApi(body);
+  }
+);
+
+export const getFavs = createAsyncThunk("sneakers/getFav", async () => {
+  return await getFavSneakersApi();
 });
 
 type sneaker = {
@@ -27,16 +38,19 @@ const sneakerSlice = createSlice({
   name: "apiData",
   initialState,
   reducers: {
-    addFavourite(state, { payload }) {
-      state.favourite.push(payload);
-    },
+    // addFavourite(state, { payload }) {
+    //   state.favourite.push(payload);
+    // },
   },
   extraReducers(builder) {
     builder.addCase(getAllThunk.fulfilled, (state, { payload }) => {
       state.list = payload;
     });
+    builder.addCase(getFavs.fulfilled, (state, { payload }) => {
+      state.favourite = payload;
+    });
   },
 });
 
-export const { addFavourite } = sneakerSlice.actions;
+// export const { addFavourite } = sneakerSlice.actions;
 export default sneakerSlice.reducer;

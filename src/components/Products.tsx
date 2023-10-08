@@ -13,25 +13,18 @@ type sneaker = {
   grid_picture_url: string;
 };
 
-
 const Products: FC = () => {
-  const sneakers = useAppSelector(state => state.sneakers)
-  const disptach:Dispatch<any> = useDispatch()
+  const sneakers = useAppSelector((state) => state.sneakers);
+  const disptach: Dispatch<any> = useDispatch();
   const [searchValue, setSearchValue] = useState<string>("");
-
-  // const DATA_URL = `https://64dccaede64a8525a0f726c5.mockapi.io/getAll`;
 
   const onSearchHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
- 
-  // const getSneakers = async () => {
-  //   const respose = await axios.get(DATA_URL);
-  //   setSneakers(respose.data.slice(0,8));
-  // };
+
   useEffect(() => {
-    disptach(getAllThunk())
-  },[disptach]);
+    disptach(getAllThunk());
+  }, [disptach]);
   return (
     <section className="products">
       <div className="container">
