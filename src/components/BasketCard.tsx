@@ -6,7 +6,7 @@ import { ReactComponent as Added } from "../images/svg/added.svg";
 import axios from "axios";
 import "../App.css";
 import { useDispatch } from "react-redux";
-import { addToFav } from "../redux/slices/sneakerSlice";
+import { addToFav, deleteFavs, getFavs } from "../redux/slices/sneakerSlice";
 
 type sneaker = {
   id: number;
@@ -19,24 +19,24 @@ interface dataFromProps {
   data: sneaker;
 }
 
-const Card: FC<dataFromProps> = ({ data }) => {
+const BasketCard: FC<dataFromProps> = ({ data }) => {
   const dispatch: Dispatch<any> = useDispatch();
-  const [added, setAdded] = useState(false);
-  const [isLiked, setLiked] = useState(false);
 
-  const onClickHandler = () => {
-    dispatch(addToFav(data));
+  const onDeleteHandler = (id: any) => {
+    dispatch(deleteFavs(id));
   };
 
   return (
     <div className="card-wrap">
-   
-      <div className="card-like-icon">
-        <ShoeLike
-          onClick={onClickHandler}
-          className={isLiked ? "liked-card" : "like-btn "}
-        ></ShoeLike>
+      <div className="card-overlay">
+        <button
+          onClick={() => onDeleteHandler(data.id)}
+          className="card-overlay-btn btn btn-secondary"
+        >
+          Delete
+        </button>
       </div>
+
       <img className="card-img" src={data.grid_picture_url} alt="sneakers" />
       <p className="card-sub-title">{data.name}</p>
       <p className="card-sup-title">
@@ -46,17 +46,8 @@ const Card: FC<dataFromProps> = ({ data }) => {
         })}
         $
       </p>
-      {added ? (
-        <div className="card-add-icon-added">
-          <Added className="added-icon"></Added>
-        </div>
-      ) : (
-        <div className="card-add-icon">
-          <Plus className="plus-btn"></Plus>
-        </div>
-      )}
     </div>
   );
 };
 
-export default Card;
+export default BasketCard;

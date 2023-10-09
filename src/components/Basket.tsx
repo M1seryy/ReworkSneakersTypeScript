@@ -6,6 +6,7 @@ import { getFavs } from "../redux/slices/sneakerSlice";
 import { useAppSelector } from "../hook";
 import { Dispatch } from "@reduxjs/toolkit";
 import Card from "./Card";
+import BasketCard from "./BasketCard";
 
 interface PropsToBasket {
   close: boolean;
@@ -30,7 +31,7 @@ const Basket: React.FC<PropsToBasket> = ({ close, setClose }) => {
         <div className="cards">
           {FAV_SNEAKERS.map((item, index) => {
             return (
-                <Card key={index} data={item} />
+                <BasketCard key={index} data={item} />
             );
           })}
         </div>

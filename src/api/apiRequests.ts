@@ -20,8 +20,13 @@ export const getFavSneakersApi: reqFunc = async () => {
 };
 
 export const postFavSneakersApi = async (item: sneaker) => {
-  const respose = await axios.post(FAV_URL, item);
+  await axios.post(FAV_URL, item);
   return item;
+};
+
+export const deleteFavSneakers = async (id: any) => {
+  await axios.delete(`${FAV_URL}/${id}`);
+  return id;
 };
 
 export default getAllSneakersApi;

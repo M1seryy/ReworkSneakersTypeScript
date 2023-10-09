@@ -1,5 +1,5 @@
-import { getFavSneakersApi } from "./../../api/apiRequests";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { deleteFavSneakers, getFavSneakersApi } from "./../../api/apiRequests";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import getAllSneakersApi, { postFavSneakersApi } from "../../api/apiRequests";
 
 export const getAllThunk = createAsyncThunk("sneakers/getAll", async () => {
@@ -10,6 +10,12 @@ export const addToFav = createAsyncThunk(
   "sneakers/add",
   async (body: sneaker) => {
     return await postFavSneakersApi(body);
+  }
+);
+export const deleteFavs = createAsyncThunk(
+  "sneakers/deleteFavs",
+  async (body: string) => {
+    return await deleteFavSneakers(body);
   }
 );
 
@@ -48,6 +54,13 @@ const sneakerSlice = createSlice({
     });
     builder.addCase(getFavs.fulfilled, (state, { payload }) => {
       state.favourite = payload;
+    });
+    builder.addCase(deleteFavs.fulfilled, (state, { payload }: any) => {
+      console.log(payload);
+      const filtered = state.favourite.filter(
+        (item: sneaker) => item.id !== payload
+      );
+      state.favourite = filtered;
     });
   },
 });
